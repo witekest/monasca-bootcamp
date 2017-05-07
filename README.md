@@ -26,16 +26,16 @@
 
 ### For Windows users
 
-    * You can use your favourite SSH client
+* You can use your favourite SSH client
 
-    * I recommend Git BASH, BASH emulator with SSH client. (included on USB media)
+* I recommend Git BASH, BASH emulator with SSH client. (included on USB media)
 
 ### For Linux users
 
-    * USB media is formated with exfat filesystem. You may need additional
-      packages installed. E.g. for Ubuntu:
+* USB media is formated with exfat filesystem. You may need additional
+  packages installed. E.g. for Ubuntu:
 
-    `sudo apt-get install exfat-fuse exfat-utils`
+      sudo apt-get install exfat-fuse exfat-utils
 
 ## Running the notebook on DevStack
 ---
