@@ -1,0 +1,55 @@
+# update locale
+sudo update-locale LC_ALL=en_US.UTF-8
+
+# install pip
+sudo apt-get update
+sudo apt-get install python-pip
+
+# install apache
+sudo apt-get install apache2 libapache2-mod-wsgi
+
+# install docker
+sudo apt-get install apt-transport-https ca-certificates curl software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
+sudo apt-get update
+sudo apt-get install docker-ce
+
+#install Docker Compose
+sudo curl -L https://github.com/docker/compose/releases/download/1.16.1/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+sudo vi /etc/group
+
+#deploy monasca-docker
+git clone https://github.com/monasca/monasca-docker.git
+pushd monasca-docker
+docker-compose up -d
+popd
+
+# install django
+sudo pip install -c http://git.openstack.org/cgit/openstack/requirements/plain/upper-constraints.txt?h=stable/pike django
+
+# install horizon
+git clone https://git.openstack.org/openstack/horizon -b stable/pike --depth=1
+pushd horizon
+sudo pip install -c http://git.openstack.org/cgit/openstack/requirements/plain/upper-constraints.txt?h=stable/pike .
+vi openstack_dashboard/local/local_settings.py
+popd
+
+# install monasca-ui
+sudo pip install -c http://git.openstack.org/cgit/openstack/requirements/plain/upper-constraints.txt?h=stable/pike python-monascaclient
+git clone https://git.openstack.org/openstack/monasca-ui
+pushd monasca-ui
+ln -f monitoring/enabled/_50_admin_add_monitoring_panel.py ~/horizon/openstack_dashboard/local/enabled/_50_admin_add_monitoring_panel.py
+ln -f monitoring/conf/monitoring_policy.json ~/horizon/openstack_dashboard/conf/monitoring_policy.json
+ln -sfF /home/ubuntu/monasca-ui/monitoring /home/ubuntu/horizon/monitoring
+vi monitoring/config/local_settings.py
+# update GRAFANA_URL
+popd monasca-ui
+
+# install stress-ng
+sudo apt-get install stress-ng
+
+# install monasca-agent
