@@ -1,9 +1,9 @@
-# Monasca Bootcamp, OpenStack Summit Boston 2017
+# Monasca Bootcamp, OpenStack Summit Sydney 2017
 
 ## Running the notebook on your workshop instance
 ---
 
-* Copy your private key (monasca_workshop.pem) from USB media or download from
+* Download your private SSH key (monasca_workshop.pem) from
   [here](https://drive.google.com/file/d/0B799R_-18_PFYUU0eEpteTB4Mjg/view?usp=sharing)
 
 * Set up the SSH tunnel to your instance
@@ -30,24 +30,11 @@
 
 * I recommend Git BASH, BASH emulator with SSH client. (included on USB media)
 
-### For Linux users
-
-* USB media is formated with exfat filesystem. You may need additional
-  packages installed. E.g. for Ubuntu:
-
-      sudo apt-get install exfat-fuse exfat-utils
-
-## Running the notebook on DevStack
+## Running the notebook on your own
 ---
 This is an iPython/Jupyter notebook that you can run on your own.
-You will require the following installed on your system:
+You will require:
 
-* An OpenStack DevStack VM with the Monasca DevStack plugin installed (monasca-log-api).
+* Ubuntu Linux 16.04
 
-    * See, https://github.com/openstack/monasca-log-api/tree/master/devstack, for more details
-
-* On DevStack VM additionally in own virtualenv:
-
-  * Jupyter, https://jupyter.readthedocs.io/en/latest/install.html
-
-  * python-monascaclient
+* and follow the [setup procedure](/setup/setup_procedure)
