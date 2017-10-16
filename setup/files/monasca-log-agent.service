@@ -1,0 +1,12 @@
+[Unit]
+Description = monasca-log-agent.service
+
+[Service]
+Group = root
+TimeoutStopSec = infinity
+KillMode = process
+ExecStart = /opt/logstash/bin/logstash -f /etc/monasca/log-agent.conf
+User = root
+
+[Install]
+WantedBy = multi-user.target
