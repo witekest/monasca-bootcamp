@@ -1,5 +1,6 @@
 # update locale
 sudo update-locale LC_ALL=en_US.UTF-8
+sudo vi /etc/hosts # add monasca as localhost
 
 # install pip
 sudo apt-get update
@@ -32,24 +33,45 @@ popd
 sudo pip install -c http://git.openstack.org/cgit/openstack/requirements/plain/upper-constraints.txt?h=stable/pike django
 
 # install horizon
+git clone https://github.com/witekest/monasca-bootcamp.git
 git clone https://git.openstack.org/openstack/horizon -b stable/pike --depth=1
 pushd horizon
 sudo pip install -c http://git.openstack.org/cgit/openstack/requirements/plain/upper-constraints.txt?h=stable/pike .
-vi openstack_dashboard/local/local_settings.py
+cp monasca-bootcamp/setup/files/local_settings.py openstack_dashboard/local/local_settings.py
 popd
 
 # install monasca-ui
 sudo pip install -c http://git.openstack.org/cgit/openstack/requirements/plain/upper-constraints.txt?h=stable/pike python-monascaclient
 git clone https://git.openstack.org/openstack/monasca-ui
 pushd monasca-ui
+sudo pip install -c http://git.openstack.org/cgit/openstack/requirements/plain/upper-constraints.txt?h=stable/pike .
 ln -f monitoring/enabled/_50_admin_add_monitoring_panel.py ~/horizon/openstack_dashboard/local/enabled/_50_admin_add_monitoring_panel.py
 ln -f monitoring/conf/monitoring_policy.json ~/horizon/openstack_dashboard/conf/monitoring_policy.json
 ln -sfF /home/ubuntu/monasca-ui/monitoring /home/ubuntu/horizon/monitoring
 vi monitoring/config/local_settings.py
 # update GRAFANA_URL
-popd monasca-ui
+popd
+pushd /etc/apache2/sites-available/
+sudo cp ~/monasca-bootcamp/setup/files/horizon.conf .
+sudo rm ../sites-enabled/000-default.conf
+sudo ln -s ../sites-available/horizon.conf .
+popd
+./horizon/manage.py collectstatic
+./horizon/manage.py compress
+sudo a2ensite horizon
+sudo service apache2 restart
 
 # install stress-ng
 sudo apt-get install stress-ng
 
-# install monasca-agent
+# install Jupyter
+sudo -s
+pip install virtualenv
+cd /opt
+virtualenv jupyter
+source jupyter/bin/activate
+pip install jupyter
+pip install -c http://git.openstack.org/cgit/openstack/requirements/plain/upper-constraints.txt?h=stable/pike python-monascaclient
+pip install -c http://git.openstack.org/cgit/openstack/requirements/plain/upper-constraints.txt?h=stable/pike monasca-agent
+deactivate
+exit

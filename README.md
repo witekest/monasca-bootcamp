@@ -14,7 +14,7 @@
 
     * `ssh -i monasca_workshop.pem ubuntu@<your_instance_ip>`
 
-    * `cd monasca_workshop`
+    * `cd monasca-bootcamp`
 
     * `git pull`
 
