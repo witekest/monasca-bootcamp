@@ -61,6 +61,14 @@ popd
 sudo a2ensite horizon
 sudo service apache2 restart
 
+#install log-agent
+sudo apt-get install openjdk-8-jre-headless
+wget https://download.elastic.co/logstash/logstash/logstash-2.4.1.tar.gz
+sudo tar zxf logstash-2.4.1.tar.gz -C /opt/
+sudo chown -R ubuntu /opt/logstash-2.4.1/
+sudo ln -sf /opt/logstash-2.4.1/ /opt/logstash
+/opt/logstash/bin/logstash-plugin install logstash-output-monasca_log_api
+
 # install stress-ng
 sudo apt-get install stress-ng
 
