@@ -5,7 +5,7 @@ Description = monasca-log-agent.service
 Group = root
 TimeoutStopSec = infinity
 KillMode = process
-ExecStart = /opt/logstash/bin/logstash -f /etc/monasca/log-agent.conf
+ExecStart = /opt/logstash/bin/logstash -f /etc/monasca/log-agent.conf -l /var/log/monasca/log-agent/log-agent.log
 User = root
 
 [Install]

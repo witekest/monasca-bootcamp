@@ -8,7 +8,7 @@
 
 * Set up the SSH tunnel to your instance
 
-    * `ssh -i monasca_workshop.pem -NfL localhost:8889:localhost:8889 ubuntu@<your_instance_ip>`
+    * `ssh -i monasca-bootcamp.pem -NfL localhost:8889:localhost:8889 ubuntu@<your_instance_ip>`
 
 * SSH to your instance and start the notebook
 

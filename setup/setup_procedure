@@ -61,7 +61,17 @@ popd
 sudo a2ensite horizon
 sudo service apache2 restart
 
-#install log-agent
+# istall monasca-agent
+sudo -s
+pip install virtualenv
+cd /opt
+virtualenv monasca-agent
+source monasca-agent/bin/activate
+pip install -c http://git.openstack.org/cgit/openstack/requirements/plain/upper-constraints.txt?h=stable/pike monasca-agent
+deactivate
+exit
+
+# install log-agent
 sudo apt-get install openjdk-8-jre-headless
 wget https://download.elastic.co/logstash/logstash/logstash-2.4.1.tar.gz
 sudo tar zxf logstash-2.4.1.tar.gz -C /opt/
@@ -69,6 +79,7 @@ sudo chown -R ubuntu /opt/logstash-2.4.1/
 sudo ln -sf /opt/logstash-2.4.1/ /opt/logstash
 /opt/logstash/bin/logstash-plugin install logstash-output-monasca_log_api
 sudo mkdir /etc/monasca
+sudo mkdir /var/log/monasca/log-agent
 sudo cp monasca-bootcamp/setup/files/log-agent.conf /etc/monasca/log-agent.conf
 sudo cp monasca-bootcamp/setup/files/monasca-log-agent.service /etc/systemd/system/monasca-log-agent.service
 
@@ -77,12 +88,10 @@ sudo apt-get install stress-ng
 
 # install Jupyter
 sudo -s
-pip install virtualenv
 cd /opt
 virtualenv jupyter
 source jupyter/bin/activate
 pip install jupyter
 pip install -c http://git.openstack.org/cgit/openstack/requirements/plain/upper-constraints.txt?h=stable/pike python-monascaclient
-pip install -c http://git.openstack.org/cgit/openstack/requirements/plain/upper-constraints.txt?h=stable/pike monasca-agent
 deactivate
 exit
