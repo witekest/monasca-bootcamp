@@ -68,6 +68,9 @@ sudo tar zxf logstash-2.4.1.tar.gz -C /opt/
 sudo chown -R ubuntu /opt/logstash-2.4.1/
 sudo ln -sf /opt/logstash-2.4.1/ /opt/logstash
 /opt/logstash/bin/logstash-plugin install logstash-output-monasca_log_api
+sudo mkdir /etc/monasca
+sudo cp monasca-bootcamp/setup/files/log-agent.conf /etc/monasca/log-agent.conf
+sudo cp monasca-bootcamp/setup/files/monasca-log-agent.service /etc/systemd/system/monasca-log-agent.service
 
 # install stress-ng
 sudo apt-get install stress-ng
