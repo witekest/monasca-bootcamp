@@ -23,11 +23,11 @@ sudo curl -L https://github.com/docker/compose/releases/download/1.16.1/docker-c
 sudo chmod +x /usr/local/bin/docker-compose
 sudo vi /etc/group
 
-#deploy monasca-docker
-git clone https://github.com/monasca/monasca-docker.git
-pushd monasca-docker
-docker-compose up -d
-popd
+# deploy monasca-docker (moved to notebook)
+#git clone https://github.com/monasca/monasca-docker.git
+#pushd monasca-docker
+#docker-compose up -d
+#popd
 
 # install django
 sudo pip install -c http://git.openstack.org/cgit/openstack/requirements/plain/upper-constraints.txt?h=stable/pike django
@@ -37,7 +37,7 @@ git clone https://github.com/witekest/monasca-bootcamp.git
 git clone https://git.openstack.org/openstack/horizon -b stable/pike --depth=1
 pushd horizon
 sudo pip install -c http://git.openstack.org/cgit/openstack/requirements/plain/upper-constraints.txt?h=stable/pike .
-cp monasca-bootcamp/setup/files/local_settings.py openstack_dashboard/local/local_settings.py
+cp ~/monasca-bootcamp/setup/files/local_settings.py openstack_dashboard/local/local_settings.py
 popd
 
 # install monasca-ui
@@ -48,6 +48,7 @@ sudo pip install -c http://git.openstack.org/cgit/openstack/requirements/plain/u
 ln -f monitoring/enabled/_50_admin_add_monitoring_panel.py ~/horizon/openstack_dashboard/local/enabled/_50_admin_add_monitoring_panel.py
 ln -f monitoring/conf/monitoring_policy.json ~/horizon/openstack_dashboard/conf/monitoring_policy.json
 ln -sfF /home/ubuntu/monasca-ui/monitoring /home/ubuntu/horizon/monitoring
+cp ~/monasca-bootcamp/setup/files/monasca_local_settings.py monitoring/config/local_settings.py
 vi monitoring/config/local_settings.py
 # update GRAFANA_URL
 popd
