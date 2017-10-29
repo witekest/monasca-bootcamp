@@ -8,13 +8,13 @@
 
 * Set up the SSH tunnel to your instance
 
-    * `ssh -i monasca_workshop.pem -NfL localhost:8888:localhost:8889 ubuntu@<your_instance_ip>`
+    * `ssh -i monasca-bootcamp.pem -NfL localhost:8888:localhost:8889 ubuntu@<your_instance_ip>`
 
 * SSH to your instance and start the notebook
 
-    * `ssh -i monasca_workshop.pem ubuntu@<your_instance_ip>`
+    * `ssh -i monasca-bootcamp.pem ubuntu@<your_instance_ip>`
 
-    * `cd monasca_workshop`
+    * `cd monasca-bootcamp`
 
     * `git pull`
 
@@ -22,32 +22,32 @@
 
 * Copy the URL and open it in your local browser. Remember to set the port number to `8888`.
 
-* Open `Monasca Bootcamp.ipynb` notebook.
+* Open `MonascaBootcamp.ipynb` notebook.
 
 ### For Windows users
 
 * You can use your favourite SSH client
 
-* I recommend Git BASH, BASH emulator with SSH client. (included on USB media)
+* We recommend Git BASH, BASH emulator with SSH client. (included on USB media)
 
-### For Linux users
+* Another good alternative is cmder (http://cmder.net/)
 
-* USB media is formated with exfat filesystem. You may need additional
-  packages installed. E.g. for Ubuntu:
+## For PuTTY users
 
-      sudo apt-get install exfat-fuse exfat-utils
+Set the private key for authentication in Connection -> SSH -> Auth. Choose monasca.ppk as your private key.
 
-## Running the notebook on DevStack
----
-This is an iPython/Jupyter notebook that you can run on your own.
-You will require the following installed on your system:
+Add the SSH tunnel in Connection -> SSH -> Tunnels with:
 
-* An OpenStack DevStack VM with the Monasca DevStack plugin installed (monasca-log-api).
+8889 as Source port.
 
-    * See, https://github.com/openstack/monasca-log-api/tree/master/devstack, for more details
+127.0.0.1:8889 as Destination.
 
-* On DevStack VM additionally in own virtualenv:
+Remember to save the session settings.
 
-  * Jupyter, https://jupyter.readthedocs.io/en/latest/install.html
+### Running the notebook on your own
 
-  * python-monascaclient
+This is an iPython/Jupyter notebook that you can run on your own. You will require:
+
+Ubuntu Linux 16.04
+
+and follow the setup procedure
