@@ -1,4 +1,4 @@
-# Monasca Bootcamp, OpenStack Summit Boston 2017
+# Monasca Bootcamp, OpenStack Summit Sydney 2017
 
 ## Running the notebook on your workshop instance
 ---
@@ -32,7 +32,7 @@
 
 * Another good alternative is cmder (http://cmder.net/)
 
-## For PuTTY users
+#### For PuTTY users
 
 Set the private key for authentication in Connection -> SSH -> Auth. Choose monasca.ppk as your private key.
 
