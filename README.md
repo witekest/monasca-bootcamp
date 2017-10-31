@@ -4,7 +4,11 @@
 ---
 
 * Download your private SSH key (monasca-bootcamp.pem) from
-  [here](https://drive.google.com/open?id=0B799R_-18_PFOThSeXNiVGE4Slk)
+  [here](https://drive.google.com/open?id=0B799R_-18_PFOThSeXNiVGE4Slk).
+
+* Change permissions
+
+    * `chmod 600 monasca-bootcamp.pem`
 
 * Set up the SSH tunnel to your instance
 
@@ -26,11 +30,11 @@
 
 ### For Windows users
 
-* You can use your favourite SSH client
+* You can use your favourite SSH client.
 
 * We recommend Git BASH, BASH emulator with SSH client.
 
-* Another good alternative is cmder (http://cmder.net/)
+* Another good alternative is [cmder](http://cmder.net/).
 
 #### For PuTTY users
 
