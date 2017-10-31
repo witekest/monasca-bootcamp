@@ -22,13 +22,15 @@
 
 * Copy the URL and open it in your local browser.
 
-* Open `Monasca Bootcamp.ipynb` notebook.
+* Open `MonascaBootcamp.ipynb` notebook.
 
 ### For Windows users
 
 * You can use your favourite SSH client
 
-* I recommend Git BASH, BASH emulator with SSH client.
+* We recommend Git BASH, BASH emulator with SSH client.
+
+* Another good alternative is cmder (http://cmder.net/)
 
 #### For PuTTY users
 
