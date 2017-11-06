@@ -4,7 +4,7 @@
 ---
 
 * Download your private SSH key (monasca-bootcamp.pem) from
-  [here](https://drive.google.com/open?id=0B799R_-18_PFOThSeXNiVGE4Slk).
+  [here](https://drive.google.com/open?id=0B799R_-18_PFVFRlejZOVkdWb0E).
 
 * Change permissions
 
@@ -39,7 +39,7 @@
 #### For PuTTY users
 
 * Set the private key for authentication in `Connection -> SSH -> Auth`.
-  Choose [monasca.ppk](https://drive.google.com/open?id=0B799R_-18_PFUGdIY3hXc2lxcms) as your private key.
+  Choose [monasca.ppk](https://drive.google.com/open?id=0B799R_-18_PFdWZNNEFtbUxTMDQ) as your private key.
 
 * Add the SSH tunnel in `Connection -> SSH -> Tunnels` with:
 
